@@ -44,10 +44,6 @@ export const Balance = () => {
         // }
     },[])
 
-    useEffect(() => {
-        localStorage.getItem('account')
-    }, [localStorage.getItem('account')])
-
     return (
         <>
             <div className='w-full'>

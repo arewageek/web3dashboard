@@ -8,12 +8,17 @@ const api = new Web3D()
 const port = process.env.PORT
 const app = express()
 
-app.get('/balance', (req, res) => {
+app.get('/balance', async (req, res) => {
     const { query } = req
 
     const address = query.account
 
-    api.nativeTokenBalance(address)
+    console.log(address)
+    // res.send(address)
+
+    const response = await api.nativeTokenBalance(address)
+
+    res.json(response)
 })
 
 app.listen(port, () => {
