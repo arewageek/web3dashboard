@@ -10,6 +10,8 @@ export const Dashboard = () => {
 
   const [currentTab, setCurrentTab] = useState('Balance')
 
+  const {reload, account} = useContext(Web3Context)
+  
   const tabs = [
     'Balance', 'Transactions', 'NFTs', 'Send Eth'
   ]
@@ -32,7 +34,24 @@ export const Dashboard = () => {
           }
         </div>
       </div>
-      <div className='bg-gradient-to-tl from-blue-400 via-blue-500 to-blue-400 w-full min-h-[200pt] rounded-b-2xl text-slate-800 font-bold shadow-xl p-4'>
+      <div className='bg-gradient-to-tl from-blue-400 via-blue-500 to-blue-400 w-full h-auto min-h-[300pt] rounded-b-2xl text-slate-800 font-bold shadow-xl p-4'>
+
+        <h3 className='py-4 overflow-auto text-sm md:text-md'>
+          { account && `Connected: ${account.slice(0,7)}...${account.slice(-7)}` }
+        </h3>
+        <div className='mb-6'>
+          <button 
+              className='bg-blue-400 shadow-lg hover:shadow border-none text-blue-950 transition-all text-sm'
+              onClick={() => { 
+                  localStorage.clear()
+                  alert("Account Unlinked")
+                  reload()
+              }}    
+          >
+              Disconnet Wallet
+          </button>
+        </div>
+        
         { currentTab === "Balance" && <Balance /> }
         { currentTab === "Transactions" && <Transactions /> }
         { currentTab === "NFTs" && <NFTs /> }

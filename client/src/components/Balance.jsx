@@ -5,7 +5,7 @@ import { Web3Context } from '../context/Web3Context'
 
 export const Balance = () => {
 
-    const { account } = React.useContext(Web3Context)
+    const { account, reload } = React.useContext(Web3Context)
 
     const balances = [
         {
@@ -44,12 +44,12 @@ export const Balance = () => {
         // }
     },[])
 
+    useEffect(() => {
+        localStorage.getItem('account')
+    }, [localStorage.getItem('account')])
+
     return (
         <>
-            <h3 className='py-4 overflow-auto text-sm md:text-md'>
-                { account && `Connected: ${account}` }
-            </h3>
-
             <div className='w-full'>
                 <h3 className='text-3xl pt-3 font-bold text-indigo-950'>
                     Available Tokens

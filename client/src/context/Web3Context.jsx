@@ -85,6 +85,8 @@ export const Web3Provider = ({ children }) => {
             setAccount(accounts[0])
             localStorage.setItem('account', accounts[0])
             
+            reload()
+            
             return ({
                 connected: true,
                 account: accounts[0]
@@ -99,10 +101,15 @@ export const Web3Provider = ({ children }) => {
         }
     }
 
+    const reload = () => {
+        window.location.reload(false)
+    }
+
     return (
         <Web3Context.Provider value={{
             connectWallet,
-            account, walletInstalled
+            account, walletInstalled,
+            reload
         }}>
             {children}
         </Web3Context.Provider>
