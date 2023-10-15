@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { Web3Context } from '../Context/Web3Context'
+import { Web3Context } from '../context/Web3Context'
 
 export const Login = () => {
 
