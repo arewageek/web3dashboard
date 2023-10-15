@@ -22,8 +22,9 @@ export const preLoaderAnim = () => {
     })
     .from(".texts-container span", {
       duration: 1.5,
-      delay: 1,
+      delay: .5,
       y: 70,
+    //   opacity: 1,
       skewY: 10,
       stagger: 0.4,
       ease: "Power3.easeOut",
@@ -54,9 +55,10 @@ export const preLoaderAnim = () => {
     .to(
       ".preloader",
       {
-        duration: 1.5,
-        height: "0vh",
-        ease: "Power3.easeOut",
+        duration: 1,
+        opacity: 0,
+        // height: "0vh",
+        ease: "Power3.easeInOut",
         onComplete: mobileLanding(),
       },
       "-=2"
